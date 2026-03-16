@@ -6,9 +6,9 @@
         <div class="flex items-center justify-between h-20 lg:h-24">
 
         <!-- Logo -->
-        <a href="#inicio" class="flex items-center gap-3 group">
+        <a href="/" class="flex items-center gap-3 group">
             <div class="w-8 h-8 relative">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+            <svg id="logo-svg" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-white transition-colors duration-500">
                 <ellipse cx="16" cy="22" rx="10" ry="8" stroke="currentColor" stroke-width="1.2"/>
                 <rect x="13" y="10" width="6" height="12" rx="1" stroke="currentColor" stroke-width="1.2"/>
                 <rect x="11" y="7" width="10" height="4" rx="2" stroke="currentColor" stroke-width="1.2"/>
@@ -22,13 +22,13 @@
         <nav class="hidden lg:flex items-center gap-10">
             <a href="/" class="nav-link text-sm tracking-[0.15em] uppercase text-white/70 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-amber-500 after:transition-all after:duration-300 hover:after:w-full">Inicio</a>
             <a href="/productos" class="nav-link text-sm tracking-[0.15em] uppercase text-white/70 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-amber-500 after:transition-all after:duration-300 hover:after:w-full">Perfumes</a>
-            <a href="#nosotros" class="nav-link text-sm tracking-[0.15em] uppercase text-white/70 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-amber-500 after:transition-all after:duration-300 hover:after:w-full">Nosotros</a>
-            <a href="#contacto" class="nav-link text-sm tracking-[0.15em] uppercase text-white/70 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-amber-500 after:transition-all after:duration-300 hover:after:w-full">Contacto</a>
+            <a href="/#nosotros" class="nav-link text-sm tracking-[0.15em] uppercase text-white/70 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-amber-500 after:transition-all after:duration-300 hover:after:w-full">Nosotros</a>
+            <a href="/#contacto" class="nav-link text-sm tracking-[0.15em] uppercase text-white/70 hover:text-white transition-colors duration-300 relative after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-px after:bg-amber-500 after:transition-all after:duration-300 hover:after:w-full">Contacto</a>
         </nav>
 
         <!-- CTA + Hamburger -->
         <div class="flex items-center gap-4">
-            <a href="#perfumes" class="hidden lg:inline-flex items-center gap-2 px-7 py-3 bg-white/10 border border-white/30 text-white text-xs tracking-[0.2em] uppercase hover:bg-white hover:text-stone-900 transition-all duration-300 group" id="cta-btn">
+            <a href="/productos" class="hidden lg:inline-flex items-center gap-2 px-7 py-3 bg-white/10 border border-white/30 text-white text-xs tracking-[0.2em] uppercase hover:bg-white hover:text-stone-900 transition-all duration-300 group" id="cta-btn">
             <span>Comprar ahora</span>
             <svg class="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </a>
@@ -46,11 +46,11 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="lg:hidden max-h-0 overflow-hidden transition-all duration-500 bg-white/98 backdrop-blur-md border-t border-stone-100">
         <nav class="flex flex-col px-6 py-6 gap-5">
-        <a href="#inicio" class="mobile-nav text-sm tracking-[0.15em] uppercase text-stone-700 py-2 border-b border-stone-100">Inicio</a>
+        <a href="/" class="mobile-nav text-sm tracking-[0.15em] uppercase text-stone-700 py-2 border-b border-stone-100">Inicio</a>
         <a href="/productos" class="mobile-nav text-sm tracking-[0.15em] uppercase text-stone-700 py-2 border-b border-stone-100">Perfumes</a>
-        <a href="#nosotros" class="mobile-nav text-sm tracking-[0.15em] uppercase text-stone-700 py-2 border-b border-stone-100">Nosotros</a>
-        <a href="#contacto" class="mobile-nav text-sm tracking-[0.15em] uppercase text-stone-700 py-2 border-b border-stone-100">Contacto</a>
-        <a href="#perfumes" class="mt-2 inline-flex justify-center items-center px-8 py-3 bg-stone-900 text-white text-xs tracking-[0.2em] uppercase">Comprar ahora</a>
+        <a href="/#nosotros" class="mobile-nav text-sm tracking-[0.15em] uppercase text-stone-700 py-2 border-b border-stone-100">Nosotros</a>
+        <a href="/#contacto" class="mobile-nav text-sm tracking-[0.15em] uppercase text-stone-700 py-2 border-b border-stone-100">Contacto</a>
+        <a href="/productos" class="mt-2 inline-flex justify-center items-center px-8 py-3 bg-stone-900 text-white text-xs tracking-[0.2em] uppercase">Comprar ahora</a>
         </nav>
     </div>
 </header>
@@ -60,14 +60,16 @@
     const toggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('mobile-menu');
     const logoText = document.getElementById('logo-text');
-    const logoSvg = toggle?.closest('header')?.querySelector('a[href="#inicio"] svg') as SVGElement | null;
+    const logoSvg = document.getElementById('logo-svg') as SVGElement | null;
     const navLinks = document.querySelectorAll<HTMLElement>('.nav-link');
     const ctaBtn = document.getElementById('cta-btn');
     const hamburgerLines = document.querySelectorAll<HTMLElement>('.hamburger-line');
 
+    // En páginas que no son la home, el header siempre está en modo "scrolled" (oscuro sobre blanco)
+    const isHome = window.location.pathname === '/' || window.location.pathname === '';
+
     function setScrolled(scrolled: boolean) {
         if (scrolled) {
-        // White bg state — dark text
         header?.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-stone-100');
         if (logoText) { logoText.classList.remove('text-white'); logoText.classList.add('text-stone-900'); }
         if (logoSvg)  { logoSvg.classList.remove('text-white'); logoSvg.classList.add('text-amber-800'); }
@@ -75,7 +77,6 @@
         if (ctaBtn) { ctaBtn.classList.remove('bg-white/10', 'border-white/30', 'text-white', 'hover:bg-white', 'hover:text-stone-900'); ctaBtn.classList.add('bg-stone-900', 'text-white', 'hover:bg-amber-900', 'border-transparent'); }
         hamburgerLines.forEach(l => { l.classList.remove('bg-white'); l.classList.add('bg-stone-900'); });
         } else {
-        // Transparent state — white text
         header?.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-sm', 'border-b', 'border-stone-100');
         if (logoText) { logoText.classList.add('text-white'); logoText.classList.remove('text-stone-900'); }
         if (logoSvg)  { logoSvg.classList.add('text-white'); logoSvg.classList.remove('text-amber-800'); }
@@ -85,10 +86,12 @@
         }
     }
 
-    // Init
-    setScrolled(window.scrollY > 50);
+    // En la home: depende del scroll. En otras páginas: siempre modo scrolled
+    setScrolled(!isHome || window.scrollY > 50);
 
-    window.addEventListener('scroll', () => setScrolled(window.scrollY > 50), { passive: true });
+    window.addEventListener('scroll', () => {
+        setScrolled(!isHome || window.scrollY > 50);
+    }, { passive: true });
 
     // Mobile menu
     toggle?.addEventListener('click', () => {
@@ -102,7 +105,7 @@
         }
     });
 
-    // Close on nav click
+    // Cerrar al hacer click en link del mobile menu
     document.querySelectorAll('.mobile-nav').forEach(link => {
         link.addEventListener('click', () => {
         toggle?.classList.remove('open');
